@@ -20,4 +20,13 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+	<!-- MVC 기본 설정 -->
+	<beans:bean id="helloController" class="kr.spring.ch01.controller.HelloController" />
+	
+	<!-- 파라미터로 전송된 데이터 처리(Get방식) -->
+	<beans:bean id="searchController" class="kr.spring.ch02.controller.SearchController" />
+	
+	<!-- POST 방식으로 데이터 전송 -->
+	<beans:bean id="newArticleController" class="kr.spring.ch03.controller.NewArticleController"/>
+
 </beans:beans>
