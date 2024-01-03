@@ -8,9 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class HelloController {
 	
 	//요청 URL과 실행 메서드 연결
-	/**
-	 * @return
-	 */
 	@RequestMapping("/hello.do")
 	public ModelAndView hello() {
 		ModelAndView mav = new ModelAndView();
