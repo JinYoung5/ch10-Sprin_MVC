@@ -18,6 +18,7 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="1" />
 	</beans:bean>
 
 	<!-- MVC 기본 설정 -->
@@ -31,7 +32,6 @@
 	
 	<!-- POST 방식으로 데이터 전송 -->
 	<beans:bean id="newArticleController" class="kr.spring.ch03.controller.NewArticleController"/>
-
 	<beans:bean id="articleService" class="kr.spring.ch03.service.ArticleService"/>
 	
 	<!-- @CookieValue 어노테이션을 이용한 쿠키 매핑 -->
@@ -39,7 +39,6 @@
 	
 	<!-- 전송된 데이터 자바빈에 담기 -->
 	<beans:bean class="kr.spring.ch05.controller.GameSearchController"/>
-	
 	<beans:bean class="kr.spring.ch05.service.SearchService"/>
 	
 	<!-- 리소스 번들 지정 -->
@@ -56,7 +55,6 @@
 	
 	<!-- 로그인 처리 -->
 	<beans:bean class="kr.spring.ch07.controller.LoginController"/>
-	
 	<beans:bean class="kr.spring.ch07.service.LoginService"/>
 	
 	<!-- 파일 업로드를 위한 multipartResolver 설정 -->
@@ -73,5 +71,23 @@
 	
 	<!-- 어노테이션을 이용한 유효성 체크 -->
 	<beans:bean class="kr.spring.ch09.controller.MemberWriteController" />
+	
+	<!-- 아래의 파일 다운로드뷰를 호출하기위해 viewResolver가 필요한데 맨처음 viewResolver와 충돌이 나기 떄문에, 우선순위 설정 -> p:order="숫자" -> 맨위에있는 viewResolver에도 우선순위 명시해야됨-->
+	<!-- 뷰의 이름과 빈의 이름이 일치하면 해당 빈을 뷰로 호출하는 ViewResolver 설정 -->
+	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0"/>
+	
+	<!-- 파일 다운로드 처리 -->
+	<beans:bean class="kr.spring.ch10.controller.DownloadController" />
+	<beans:bean id="download" class="kr.spring.ch10.view.DownloadView" />
+	
+	<!-- 엑셀 파일 다운로드 처리 -->
+	<beans:bean class="kr.spring.ch11.controller.PageRanksController" />
+	<beans:bean id="pageRanks" class="kr.spring.ch11.view.PageRanksView" />
+	
+	<!-- JSON 문자열 생성 -->
+	<beans:bean class="kr.spring.ch12.controller.PageReportController" />
+	
+	
+	
 	
 </beans:beans>
